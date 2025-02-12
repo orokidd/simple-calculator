@@ -57,8 +57,8 @@ function countResult(num1, num2, op) {
 
 function clearState() {
   waitSecondNumber = false;
-  firstNum = ""
-  secondNum = ""
+  firstNum = 0;
+  secondNum = 0;
   operatorNum = ""
   output.textContent = ""
   outputOp.textContent = ""
