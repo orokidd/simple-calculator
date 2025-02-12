@@ -9,24 +9,21 @@ const output2 = document.querySelector(".operand2");
 
 let waitSecondNumber, firstNum, secondNum, operatorNum, finalResult;
 
-function inputFirstNumber(number) {
-  output.textContent += number.value;
-  firstNum += number.value;
-}
-
-function inputSecondNumber(number) {
-  if (!operatorNum) {
-    clearState();
-    inputFirstNumber(number);
+function inputNumber(number) {
+  if (!waitSecondNumber) {
+    output.textContent += number.value;
+    firstNum += number.value;
   } else {
-    output2.textContent += number.value;
-    secondNum += number.value;
+    if (!operatorNum) {
+      clearState();
+      output.textContent += number.value;
+      firstNum += number.value;
+    } else {
+      output2.textContent += number.value;
+      secondNum += number.value;
+    }
   }
 }
-
-operatorButton.forEach((operator) => {
-  operator.addEventListener('click', () => computeResult(operator.textContent))
-})
 
 function computeResult(operator) {
   if (secondNum) {
@@ -69,13 +66,11 @@ function clearState() {
 }
 
 numbersButton.forEach((number) => {
-  number.addEventListener('click', () => {
-    if (!waitSecondNumber) {
-      inputFirstNumber(number)
-    } else {
-      inputSecondNumber(number)
-    }
-  })
+  number.addEventListener('click', () => inputNumber(number));
+});
+
+operatorButton.forEach((operator) => {
+  operator.addEventListener('click', () => computeResult(operator.textContent))
 })
 
 countButton.addEventListener('click', () => {
