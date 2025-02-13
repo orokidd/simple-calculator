@@ -3,9 +3,7 @@ const numbersButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
 const countButton = document.querySelector(".count");
 const clearButton = document.querySelector(".clear");
-const output = document.querySelector(".operand1");
-const outputOp = document.querySelector(".operator");
-const output2 = document.querySelector(".operand2");
+const [output, outputOp, output2] = document.querySelectorAll(".operand1, .operator, .operand2")
 
 let waitSecondNumber, firstNum, secondNum, operatorNum, finalResult;
 
