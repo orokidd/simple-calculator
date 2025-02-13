@@ -13,15 +13,16 @@ function inputNumber(number) {
   if (!waitSecondNumber) {
     output.textContent += number.value;
     firstNum += number.value;
+    return;
+  }
+
+  if (!operatorNum) {
+    clearState();
+    output.textContent += number.value;
+    firstNum += number.value;
   } else {
-    if (!operatorNum) {
-      clearState();
-      output.textContent += number.value;
-      firstNum += number.value;
-    } else {
-      output2.textContent += number.value;
-      secondNum += number.value;
-    }
+    output2.textContent += number.value;
+    secondNum += number.value;
   }
 }
 
@@ -39,6 +40,7 @@ function computeResult(operator) {
   } else {
     waitSecondNumber = true;
   }
+
   outputOp.textContent = operator;
   operatorNum = operator;
 }
@@ -80,9 +82,7 @@ operatorButton.forEach((operator) => {
 });
 
 countButton.addEventListener("click", () => {
-  if (!secondNum) {
-    return;
-  }
+  if (!secondNum) return;
   computeResult(operatorNum);
   outputOp.textContent = "";
   operatorNum = "";
