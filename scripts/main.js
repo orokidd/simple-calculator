@@ -4,6 +4,7 @@ const operatorButton = document.querySelectorAll(".operator");
 const countButton = document.querySelector(".count");
 const clearButton = document.querySelector(".clear");
 const ceButton = document.querySelector(".ce");
+const plusMinus = document.querySelector(".plus-min");
 const [output, outputOp, output2] = document.querySelectorAll(
   ".operand1, .operator, .operand2"
 );
@@ -92,6 +93,31 @@ function deleteCharacter() {
     output2.textContent = output2.textContent.slice(0, -1);
     secondNum = secondNum.slice(0, -1);
   }
+}
+
+plusMinus.addEventListener("click", plusMinusButton);
+
+function plusMinusButton() {
+  if (!waitSecondNumber) {
+    const isMinusNumber = output.textContent.includes("-");
+    if (isMinusNumber) {
+      output.textContent = output.textContent.slice(1);
+      firstNum = firstNum.slice(1);
+      return;
+    }
+    output.textContent = "-" + output.textContent;
+    firstNum = "-" + firstNum;
+    return;
+  }
+
+  const isMinusNumber = output2.textContent.includes("-");
+  if (isMinusNumber) {
+    output2.textContent = output2.textContent.slice(1);
+    secondNum = secondNum.slice(1);
+    return;
+  }
+  output2.textContent = "-" + output2.textContent;
+  secondNum = "-" + secondNum;
 }
 
 countButton.addEventListener("click", () => {
