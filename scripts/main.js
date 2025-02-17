@@ -1,10 +1,9 @@
-const outputDiv = document.querySelector(".outputDiv");
-const numbersButton = document.querySelectorAll(".number");
-const operatorButton = document.querySelectorAll(".operator");
-const countButton = document.querySelector(".count");
-const clearButton = document.querySelector(".clear");
-const ceButton = document.querySelector(".ce");
-const plusMinus = document.querySelector(".plus-min");
+const btnNumbers = document.querySelectorAll(".number");
+const btnOperator = document.querySelectorAll(".operator");
+const btnCount = document.querySelector(".count");
+const btnClear = document.querySelector(".clear");
+const btnCe = document.querySelector(".ce");
+const btnPlusMinus = document.querySelector(".plus-min");
 const [output, outputOp, output2] = document.querySelectorAll(
   ".operand1, .operator, .operand2"
 );
@@ -75,15 +74,15 @@ function clearState() {
   output2.textContent = "";
 }
 
-numbersButton.forEach((number) => {
+btnNumbers.forEach((number) => {
   number.addEventListener("click", () => inputNumber(number));
 });
 
-operatorButton.forEach((operator) => {
+btnOperator.forEach((operator) => {
   operator.addEventListener("click", () => computeResult(operator.textContent));
 });
 
-ceButton.addEventListener("click", deleteCharacter);
+btnCe.addEventListener("click", deleteCharacter);
 
 function deleteCharacter() {
   if (!waitSecondNumber) {
@@ -95,7 +94,7 @@ function deleteCharacter() {
   }
 }
 
-plusMinus.addEventListener("click", plusMinusButton);
+btnPlusMinus.addEventListener("click", plusMinusButton);
 
 function plusMinusButton() {
   if (!waitSecondNumber) {
@@ -120,13 +119,13 @@ function plusMinusButton() {
   secondNum = "-" + secondNum;
 }
 
-countButton.addEventListener("click", () => {
+btnCount.addEventListener("click", () => {
   if (!secondNum) return;
   computeResult(operatorNum);
   outputOp.textContent = "";
   operatorNum = "";
 });
 
-clearButton.addEventListener("click", clearState);
+btnClear.addEventListener("click", clearState);
 
 clearState();
