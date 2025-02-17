@@ -3,7 +3,10 @@ const numbersButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
 const countButton = document.querySelector(".count");
 const clearButton = document.querySelector(".clear");
-const [output, outputOp, output2] = document.querySelectorAll(".operand1, .operator, .operand2")
+const ceButton = document.querySelector(".ce");
+const [output, outputOp, output2] = document.querySelectorAll(
+  ".operand1, .operator, .operand2"
+);
 
 let waitSecondNumber, firstNum, secondNum, operatorNum, finalResult;
 
@@ -78,6 +81,18 @@ numbersButton.forEach((number) => {
 operatorButton.forEach((operator) => {
   operator.addEventListener("click", () => computeResult(operator.textContent));
 });
+
+ceButton.addEventListener("click", deleteCharacter);
+
+function deleteCharacter() {
+  if (!waitSecondNumber) {
+    output.textContent = output.textContent.slice(0, -1);
+    firstNum = firstNum.slice(0, -1);
+  } else {
+    output2.textContent = output2.textContent.slice(0, -1);
+    secondNum = secondNum.slice(0, -1);
+  }
+}
 
 countButton.addEventListener("click", () => {
   if (!secondNum) return;
