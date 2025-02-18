@@ -18,7 +18,8 @@ function inputNumber(number) {
   }
 
   if (!operatorNum) {
-    clearState();
+    // clearState();
+    // waitSecondNumber = false;
     output.textContent += number.value;
     firstNum += number.value;
   } else {
@@ -34,8 +35,8 @@ function computeResult(operator) {
       parseFloat(secondNum),
       operatorNum
     );
-    output.textContent = finalResult;
-    firstNum = finalResult;
+    output.textContent = finalResult.toString();
+    firstNum = finalResult.toString();
     output2.textContent = "";
     secondNum = "";
   } else {
@@ -95,13 +96,14 @@ function deleteCharacter() {
   if (operatorNum) {
     outputOp.textContent = outputOp.textContent.slice(0, -1);
     operatorNum = operatorNum.slice(0, -1);
-    waitSecondNumber = false;
+    // waitSecondNumber = false;
     return;
   }
 
   if (firstNum) {
     output.textContent = output.textContent.slice(0, -1);
     firstNum = firstNum.slice(0, -1);
+    console.log(firstNum)
     return;
   }
 }
