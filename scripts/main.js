@@ -66,8 +66,8 @@ function countResult(num1, num2, op) {
 
 function clearState() {
   waitSecondNumber = false;
-  firstNum = 0;
-  secondNum = 0;
+  firstNum = "";
+  secondNum = "";
   operatorNum = "";
   output.textContent = "";
   outputOp.textContent = "";
@@ -85,12 +85,24 @@ btnOperator.forEach((operator) => {
 btnCe.addEventListener("click", deleteCharacter);
 
 function deleteCharacter() {
-  if (!waitSecondNumber) {
-    output.textContent = output.textContent.slice(0, -1);
-    firstNum = firstNum.slice(0, -1);
-  } else {
+  if (secondNum) {
     output2.textContent = output2.textContent.slice(0, -1);
     secondNum = secondNum.slice(0, -1);
+    console.log(secondNum)
+    return;
+  }
+
+  if (operatorNum) {
+    outputOp.textContent = outputOp.textContent.slice(0, -1);
+    operatorNum = operatorNum.slice(0, -1);
+    waitSecondNumber = false;
+    return;
+  }
+
+  if (firstNum) {
+    output.textContent = output.textContent.slice(0, -1);
+    firstNum = firstNum.slice(0, -1);
+    return;
   }
 }
 
