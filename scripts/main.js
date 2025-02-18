@@ -11,15 +11,7 @@ const [output, outputOp, output2] = document.querySelectorAll(
 let waitSecondNumber, firstNum, secondNum, operatorNum, finalResult;
 
 function inputNumber(number) {
-  // if (!waitSecondNumber) {
-  //   output.textContent += number.value;
-  //   firstNum += number.value;
-  //   return;
-  // }
-
   if (!operatorNum) {
-    // clearState();
-    // waitSecondNumber = false;
     output.textContent += number.value;
     firstNum += number.value;
   } else {
@@ -39,10 +31,7 @@ function computeResult(operator) {
     firstNum = finalResult.toString();
     output2.textContent = "";
     secondNum = "";
-  } 
-  // else {
-  //   waitSecondNumber = true;
-  // }
+  }
 
   outputOp.textContent = operator;
   operatorNum = operator;
@@ -90,21 +79,20 @@ function deleteCharacter() {
   if (secondNum) {
     output2.textContent = output2.textContent.slice(0, -1);
     secondNum = secondNum.slice(0, -1);
-    console.log(secondNum)
+    console.log(secondNum);
     return;
   }
 
   if (operatorNum) {
     outputOp.textContent = outputOp.textContent.slice(0, -1);
     operatorNum = operatorNum.slice(0, -1);
-    // waitSecondNumber = false;
     return;
   }
 
   if (firstNum) {
     output.textContent = output.textContent.slice(0, -1);
     firstNum = firstNum.slice(0, -1);
-    console.log(firstNum)
+    console.log(firstNum);
     return;
   }
 }
@@ -112,7 +100,7 @@ function deleteCharacter() {
 btnPlusMinus.addEventListener("click", plusMinusButton);
 
 function plusMinusButton() {
-  if (!waitSecondNumber) {
+  if (!operatorNum) {
     const isMinusNumber = output.textContent.includes("-");
     if (isMinusNumber) {
       output.textContent = output.textContent.slice(1);
