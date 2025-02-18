@@ -8,7 +8,7 @@ const [output, outputOp, output2] = document.querySelectorAll(
   ".operand1, .operator, .operand2"
 );
 
-let waitSecondNumber, firstNum, secondNum, operatorNum, finalResult;
+let firstNum, secondNum, operatorNum, finalResult;
 
 function inputNumber(number) {
   if (!operatorNum) {
@@ -56,7 +56,6 @@ function countResult(num1, num2, op) {
 }
 
 function clearState() {
-  waitSecondNumber = false;
   firstNum = "";
   secondNum = "";
   operatorNum = "";
