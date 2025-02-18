@@ -11,11 +11,11 @@ const [output, outputOp, output2] = document.querySelectorAll(
 let waitSecondNumber, firstNum, secondNum, operatorNum, finalResult;
 
 function inputNumber(number) {
-  if (!waitSecondNumber) {
-    output.textContent += number.value;
-    firstNum += number.value;
-    return;
-  }
+  // if (!waitSecondNumber) {
+  //   output.textContent += number.value;
+  //   firstNum += number.value;
+  //   return;
+  // }
 
   if (!operatorNum) {
     // clearState();
@@ -39,9 +39,10 @@ function computeResult(operator) {
     firstNum = finalResult.toString();
     output2.textContent = "";
     secondNum = "";
-  } else {
-    waitSecondNumber = true;
-  }
+  } 
+  // else {
+  //   waitSecondNumber = true;
+  // }
 
   outputOp.textContent = operator;
   operatorNum = operator;
